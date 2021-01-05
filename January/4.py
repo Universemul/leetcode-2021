@@ -27,7 +27,7 @@ class ListNode:
         return f"{self.val}"
 
 class Solution:
-    def mergeTwoLists(self, l1: List[ListNode], l2: List[ListNode]) -> List[ListNode]:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         if not l1 or not l2:
             return l1 or l2
         if l1.val < l2.val:
@@ -39,13 +39,9 @@ class Solution:
 class SolutionTest(unittest.TestCase):
     
     def test_full(self):
-        n3 = ListNode(3, None)
-        n2 = ListNode(2, n3)
-        n1 = ListNode(1, n2)
-        nn4 = ListNode(4, None)
-        nn3 = ListNode(3, nn4)
-        nn1 = ListNode(1, nn3)
-        cur = Solution().mergeTwoLists(n1, nn1)
+        l1 = ListNode(1, ListNode(2, ListNode(3, None)))
+        l2 = ListNode(1, ListNode(3, ListNode(4, None)))
+        cur = Solution().mergeTwoLists(l1, l2)
         expected = [1, 1, 2, 3, 3, 4]
         result = []
         while cur:
